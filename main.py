@@ -17,6 +17,7 @@ from configparser import SafeConfigParser
 
 if __name__ == '__main__':
     dbSettings = SafeConfigParser()
+    # También podría tener los archivos cifrados en AES con pyAesCrypt en donde esten guardados y con easygui pedir las credenciales para desencriptar
     dbSettings.read(easygui.fileopenbox(msg = "Indicar archivo de coneccion a la base", title = "Seleccionar archivo", filetypes = "*.ini"))
     # Scopes que dan acceso a la API
     DRIVE_SCOPE = ['https://www.googleapis.com/auth/gmail.send','https://www.googleapis.com/auth/drive','https://www.googleapis.com/auth/drive.file','https://www.googleapis.com/auth/gmail.readonly']
