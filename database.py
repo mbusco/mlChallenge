@@ -79,4 +79,12 @@ class databaseInstance():
             return True
     
     def updateItem(self, item):
-        pass
+        try:
+            sql = 'UPDATE itemstable SET NAME= %s, EXTENSION= %s, OWNER_NAME= %s, OWNER_EMAIL= %s, VISIBILITY= %s, LAST_MODIFICATION_DATE= %s WHERE FILE_ID = %s'
+            values = (item.NOMBRE_ARCHIVO, item.EXTENSION, item.OWNER_NAME, item.OWNER_MAIL, item.VISIBILIDAD, item.FECHA_ULTIMA_MODIFICACION, item.ID)
+            mycursor = self.CONNECTOR.cursor()
+            mycursor.execute(sql, values)
+            self.CONNECTOR.commit()
+            mycursor.close()
+        except mysql.connector.Error as error:
+            print('Hubo un inconveniente al realizar el update: {}'.format(error))
